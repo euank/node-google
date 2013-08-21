@@ -79,4 +79,26 @@ describe('+ google()', function(){
     })
   })
 
+  describe('when proxy is set', function () {
+    it('should return search results', function(done){
+      var nextCounter = 0
+        , allLinks = []
+        , query = "Microsoft";
+
+      var finished = function(){
+        T (allLinks.length > 90);
+        done()
+      }
+
+      // tested with real proxy
+      // TODO: setup local proxy to test
+      google.proxy = '';
+      google(query, function(err, next, links){
+        allLinks = allLinks.concat(links);
+        //console.log(allLinks.length)
+        finished();
+      })
+    
+    })
+  })
 }) 
