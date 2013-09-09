@@ -92,8 +92,11 @@ describe('+ google()', function(){
 
       // tested with real proxy
       // TODO: setup local proxy to test
-      google.proxy = '';
-      google(query, function(err, next, links){
+      var opt = {
+        query: query,
+        proxy: ''
+      };
+      google(opt, function(err, next, links){
         allLinks = allLinks.concat(links);
         //console.log(allLinks.length)
         finished();
