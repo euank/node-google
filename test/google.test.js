@@ -57,6 +57,16 @@ describe('+ google()', function(){
     });
   
   })
+  
+  it('should not return search results when there are none', function(done){
+    var query = "\"Microsoft fuggy buttmuncher\"";
+
+    google(query, function(err, next, links){
+      T (links.length == 0);
+      done();
+    });
+  
+  })
 
   describe('when resultsPerPage is set', function () {
     it('should return search results', function(done){
