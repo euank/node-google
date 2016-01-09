@@ -1,5 +1,6 @@
 var testutil = require('testutil')
   , google = require('../lib/google')
+  , crypto = require('crypto')
 
 describe('+ google()', function(){
   it('should return search results', function(done){
@@ -59,7 +60,7 @@ describe('+ google()', function(){
   })
   
   it('should not return search results when there are none', function(done){
-    var query = "\"Microsoft fuggy buttmuncher\"";
+    var query = crypto.randomBytes(150).toString('hex');
 
     google(query, function(err, next, links){
       T (links.length == 0);
